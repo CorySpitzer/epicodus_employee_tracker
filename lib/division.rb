@@ -1,3 +1,3 @@
-class Division < ActiveRecord::Migration
+class Division < ActiveRecord::Base
   has_many(:employees)
 end

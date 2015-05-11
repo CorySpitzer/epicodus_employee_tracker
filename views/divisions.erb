@@ -1,4 +1,22 @@
 <h1>Divisions</h1>
-<% @divisions.each() do |division| %>
-  <li><%= division.description %> <a href="/divisions/<%= division.id() %>/edit">Edit employee</a></li>
-  <% end %>
+<p>Add division:</p>
+
+<form action="/divisions" method="post">
+  <label for="name">Division's name:</label>
+  <input id="name" name="name" type="text">
+  <button type="submit">Add division</button>
+</form>
+
+<% if @divisions.any?() %>
+  <p>Click a division to view or edit it</p>
+  <ul>
+    <% @divisions.each() do |division| %>
+      <li><%= division.name %> <a href="/divisions/<%= division.id() %>">Edit division</a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p> There are no divisions yet.</p>
+<% end %>
+
+<p> <a href="/employees">Go to Employees</a></p>
+<p> <a href="/">Main Page</a></p>

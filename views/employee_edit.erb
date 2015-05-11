@@ -1,4 +1,4 @@
-<h1>Update <%=@employee.description() %> </h1>
+<h1>View and Update <%=@employee.name() %> </h1>
 
 <form action="/employees/<%= @employee.id() %>" method="post">
   <input name="_method" type="hidden" value="patch">
@@ -6,3 +6,35 @@
   <input id="name" name="name" text="text">
   <button type="submit">Change</button>
 </form>
+
+<h3>Add a division for this employee:</h3>
+<% if @divisions.any?() %>
+  <form action="/employees/<%= @employee.id %>" method="post">
+    <label for="division_id">Select a Division</label>
+    <select id="division_id" name="division_id" type="text">
+    <% @divisions.each() do |division| %>
+      <option value="<%= division.id()%>"> <%= division.name() %> </option>
+    <% end %>
+  </select>
+  <button type="submit">Add division</button>
+  </form>
+<% end %>
+
+<% if [@employee.division].any? %>
+  <h3>This employee's division:</h3>
+  <ul>
+  <% [@employee.division()].each() do |division| %>
+    <li><%= division.name() %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>The employee has no division yet. </p>
+<% end %>
+
+<form action="/employees/<%= @employee.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="submit">Delete employee</button>
+</form>
+
+<p><a href="/divisions">Add divisions</a></p>
+<p><a href="/">Main Page</a></p>

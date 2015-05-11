@@ -1,4 +1,22 @@
 <h1>Employees</h1>
-<% @employees.each() do |employee| %>
-  <li><%= employee.description %> <a href="/employees/<%= employee.id() %>/edit">Edit employee</a></li>
+<p>Add employee:</p>
+
+<form action="/employees" method="post">
+  <label for="name">Employee's name:</label>
+  <input id="name" name="name" type="text">
+  <button type="submit">Add employee</button>
+</form>
+
+<% if @employees.any?() %>
+  <p>Click an employee to view or edit him or her</p>
+  <ul>
+  <% @employees.each() do |employee| %>
+    <li><%= employee.name %> <a href="/employees/<%= employee.id() %>">Edit employee</a></li>
   <% end %>
+  </ul>
+<% else %>
+  <p> There are no employees yet.</p>
+<% end %>
+
+<p> <a href="/divisions">Go to Divisions</a></p>
+<p> <a href="/">Main Page</a></p>
