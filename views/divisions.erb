@@ -1,0 +1,4 @@
+<h1>Divisions</h1>
+<% @divisions.each() do |division| %>
+  <li><%= division.description %> <a href="/divisions/<%= division.id() %>/edit">Edit employee</a></li>
+  <% end %>

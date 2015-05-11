@@ -1,0 +1,4 @@
+<h1>Employees</h1>
+<% @employees.each() do |employee| %>
+  <li><%= employee.description %> <a href="/employees/<%= employee.id() %>/edit">Edit employee</a></li>
+  <% end %>
