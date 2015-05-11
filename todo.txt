@@ -1,0 +1,4 @@
+replace erbs with redirects
+write integration test
+edit unit tests?
+add projects

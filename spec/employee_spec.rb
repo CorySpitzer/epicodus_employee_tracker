@@ -8,6 +8,17 @@ describe(Employee) do
   end
 end
 
+describe(Employee) do
+  it("tells which projects an employee is on") do
+    project1 = Project.create({:name => "web site"})
+    project2 = Project.create({:name => "fix bugs"})
+    division1 = Division.create({:name => "division1"})
+    employee1 = Employee.create({:name => "employee1", :division_id => division1.id})
+    employee1.update({:project_ids => [project1.id(), project2.id()]})
+    expect(employee1.projects()).to(eq([project1, project2]))
+  end
+end
+
 #
 # describe(Todo) do
 #   before() do
